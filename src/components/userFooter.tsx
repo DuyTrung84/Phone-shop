@@ -8,11 +8,11 @@ const UserFooter = () => {
                 <p>Gặp trực tiếp cửa hàng gần nhất (Zalo hoặc gọi điện)</p>
                 <p>Phương thức thanh toán</p>
                 <div className="grid grid-cols-4 gap-5 mt-2 ">
-                    <img src="atm1.png" alt="" />
-                    <img src="atm2.png" alt="" />
-                    <img src="atm3.png" alt="" />
-                    <img src="atm4.png" alt="" />
-                    <img src="atm5.png" alt="" />
+                    <img src="../public/atm1.png" alt="" />
+                    <img src="../public/atm2.png" alt="" />
+                    <img src="../public/atm3.png" alt="" />
+                    <img src="../public/atm4.png" alt="" />
+                    <img src="../public/atm5.png" alt="" />
                 </div>
 
             </div>
@@ -23,7 +23,7 @@ const UserFooter = () => {
                 <h3>Đối tác dịch vụ bảo hành</h3>
                 <p>Điện Thoại - Máy tính</p>
                 <p>Trung tâm bảo hành uỷ quyền Apple</p>
-                <img src="dienthoai.png" alt="" />
+                <img src="../public/dienthoai.png" alt="" />
             </div>
             <div>
                 <p>Mua hàng và thanh toán Online</p>

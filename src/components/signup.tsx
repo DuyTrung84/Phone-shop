@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
-import { SignupForm, signupSchema } from './models';
+import { SignupForm, signupSchema } from '../models';
 import { signup } from '../api/auth';
 
 
@@ -18,10 +18,11 @@ const Signup = () => {
         try {
             const response = await signup(data)
             console.log(response);
+            alert("Đăng ký thành công")
             navigate('/signin')
 
         } catch (err) {
-            console.log(err);
+            alert("đăng ký không thành công " + err)
 
         }
 
@@ -52,7 +53,7 @@ const Signup = () => {
                     <h1
                         className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
                     >
-                        Welcome to Squid 🦑
+                        Đăng ký
                     </h1>
 
                     <p className="mt-4 leading-relaxed text-gray-500">

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom'
-import { SigninForm, signinSchema } from './models';
+import { SigninForm, signinSchema } from '../models';
 import { signin, signup } from '../api/auth';
 import { useLocalStorage } from '../hook';
 
@@ -22,6 +22,8 @@ const Signin = () => {
                 accessToken,
                 ...user
             })
+            console.log(accessToken);
+
             if (user.role == "admin") {
                 navigate('/admin')
             } else if (user.role == "member") {
@@ -29,7 +31,7 @@ const Signin = () => {
             }
 
         } catch (err) {
-            console.log(err);
+            alert("Tài khoản hoặc mật khẩu không chính xác");
 
         }
 
@@ -60,7 +62,7 @@ const Signin = () => {
                     <h1
                         className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
                     >
-                        Welcome to Squid 🦑
+                        Đăng nhập
                     </h1>
 
                     <p className="mt-4 leading-relaxed text-gray-500">

@@ -8,19 +8,24 @@ import Show from './components/admin/show'
 import Create from './components/admin/create'
 import Signin from './components/signin'
 import Signup from './components/signup'
+import UpdateProduct from './components/admin/updateProduct'
 function App() {
   return <BrowserRouter>
     <Routes>
       <Route path='/' element={<UserLayout />}>
         <Route index element={<Home />} />
-        <Route path='/detail' element={<ProductDetail />} />
+        <Route path='/detail/:id' element={<ProductDetail />} />
 
       </Route>
       <Route path='/signin' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
-      <Route path='/admin' element={<AdminLayout />}>
+
+
+      <Route path='/admin/' element={<AdminLayout />}>
         <Route index element={<Show />} />
         <Route path='create' element={<Create />} />
+        <Route path='update/:id' element={<UpdateProduct />} />
+
       </Route>
 
     </Routes>

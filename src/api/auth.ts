@@ -1,4 +1,4 @@
-import { SignupForm, SigninForm } from "../components/models";
+import { SignupForm, SigninForm } from "../models";
 import insntace from "./insntace";
 
 

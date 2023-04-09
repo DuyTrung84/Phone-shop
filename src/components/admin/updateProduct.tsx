@@ -1,35 +1,46 @@
 import { useForm } from 'react-hook-form';
 import AdminMenu from "./adminMenu"
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addProducts } from '../../api/products';
+import { getById, updateProducts } from '../../api/products';
 import { useNavigate } from 'react-router-dom'
-import { createForm, createSchema } from '../../models';
+import { useParams } from 'react-router-dom';
+import { updateSchema, updateForm } from '../../models';
 
-
-
-const Create = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<createForm>({
-        resolver: yupResolver(createSchema)
-    })
-    const navigate = useNavigate()
-    const onSubmit = async (data: createForm) => {
-        console.log(data);
-
-        try {
-            const response = await addProducts(data)
-            console.log(response)
-            alert('Thêm sản phẩm thành công')
-            navigate('/admin')
-        } catch (error) {
-            alert("Thêm không thành công. Lỗi" + error)
+const UpdateProduct = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm<updateForm>({
+        resolver: yupResolver(updateSchema),
+        defaultValues: async () => {
+            if (id) {
+                return await fetchProductById(id)
+            }
         }
+    });
+
+    const OnSubmit = async (data: updateForm) => {
+        try {
+            const response = await updateProducts(id, data)
+            console.log(response);
+            alert("Sửa thành công");
+            navigate("/admin")
+
+        } catch (error) {
+
+        }
+        console.log(data);
+    }
+    const fetchProductById = async (id: string) => {
+        const { data } = await getById(id);
+        return data
+        console.log(data);
     }
 
     return <div className="flex flex-1">
         <div className=""><AdminMenu /></div>
         <div className="bg-gray-100 w-full pl-7 pt-10">
-            <h1 className="ml-5">Thêm sản phẩm</h1>
-            <form className="grid grid-cols-2 bg-white h-full gap-4 " onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="ml-5">Sửa sản phẩm</h1>
+            <form className="grid grid-cols-2 bg-white h-full gap-4 " onSubmit={handleSubmit(OnSubmit)}>
                 <div>
                     <input type="file" name="" id="" /><hr />
                     <p>Mô tả ngắn:</p>
@@ -70,8 +81,8 @@ const Create = () => {
                             </div>
                         </div>
                         {/* <span>Danh mục:   </span><select name="" id="" className="border-2 border-gray-400 w-full rounded h-auto py-1">
-                            <option value="" >Laptop</option>
-                        </select> */}
+                        <option value="" >Laptop</option>
+                    </select> */}
                         <p>Đặc điểm nổi bật:</p>
                         <textarea
                             className="border-2 border-gray-400 w-full rounded h-40 "
@@ -91,4 +102,5 @@ const Create = () => {
         </div>
     </div >
 }
-export default Create
+
+export default UpdateProduct;

@@ -1,11 +1,18 @@
-const Product = () => {
-    return <a href="#" className="block mb-5" >
+import { Link } from "react-router-dom";
+import { IProduct } from "../models";
+
+type Props = {
+    data: IProduct
+}
+
+const Product = ({ data }: Props) => {
+    return <Link to={`detail/${data._id}`} className="block mb-5" >
         <img alt="Art" src="sp1.png" className="" />
 
-        <p className="text-xs">iPhone 11 64GB I Chính hãng VN/A</p>
+        <p className="text-xs">{data.name}</p>
         <p>
-            <span className="text-sm">10.790.000₫</span>
-            <del className="text-xs ml-2">34.990.000₫</del>
+            <span className="text-sm">{data.price}</span>
+            <del className="text-xs ml-2">{data.priceSale}</del>
         </p>
         <p className="flex">
             <img src="sao.png" alt="" className="w-2.5 h-2.5" />
@@ -17,7 +24,7 @@ const Product = () => {
         </p>
 
 
-    </a>
+    </Link>
 }
 
 export default Product;
