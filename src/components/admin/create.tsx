@@ -25,11 +25,11 @@ const Create = () => {
         }
     }
 
-    return <div className="flex flex-1">
+    return <form className="flex flex-1" onSubmit={handleSubmit(onSubmit)}>
         <div className=""><AdminMenu /></div>
         <div className="bg-gray-100 w-full pl-7 pt-10">
             <h1 className="ml-5">Thêm sản phẩm</h1>
-            <form className="grid grid-cols-2 bg-white h-full gap-4 " onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid grid-cols-2 bg-white h-full gap-4 " >
                 <div>
                     <input type="file" name="" id="" /><hr />
                     <p>Mô tả ngắn:</p>
@@ -87,8 +87,8 @@ const Create = () => {
                         <button className="bg-blue-500 px-2.5 py-1.5 rounded-md hover:bg-sky-700">Thêm mới</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div >
+    </form >
 }
 export default Create

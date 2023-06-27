@@ -9,6 +9,7 @@ import Create from './components/admin/create'
 import Signin from './components/signin'
 import Signup from './components/signup'
 import UpdateProduct from './components/admin/updateProduct'
+import AdminUser from './components/admin/showUser'
 function App() {
   return <BrowserRouter>
     <Routes>
@@ -25,6 +26,8 @@ function App() {
         <Route index element={<Show />} />
         <Route path='create' element={<Create />} />
         <Route path='update/:id' element={<UpdateProduct />} />
+        <Route path='user' element={<AdminUser />} />
+
 
       </Route>
 

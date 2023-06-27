@@ -8,11 +8,11 @@ import { Link } from "react-router-dom"
 
 import AdminMenu from "./adminMenu"
 const Show = () => {
-    const [products, setProducts] = useState<IProduct[]>([])
     const VND = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND',
     });
+    const [products, setProducts] = useState<IProduct[]>([])
     async function fetchProduct() {
         const { data } = await getAll()
         setProducts(data)

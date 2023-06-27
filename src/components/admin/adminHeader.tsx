@@ -25,6 +25,7 @@ const AdminHeader = () => {
             alert("Mật khẩu hoặc tài khoản không chính xác")
             navigate("/signin");
         } else if (user.role !== 'admin') {
+            // Nếu không phải admin sẽ điều hướng lại đến trang chủ
             alert("Bạn không có quyền vào trang admin")
             navigate("/");
         }

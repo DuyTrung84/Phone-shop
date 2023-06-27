@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { updateSchema, updateForm } from '../../models';
 
 const UpdateProduct = () => {
+
     const { id } = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm<updateForm>({
@@ -17,6 +18,7 @@ const UpdateProduct = () => {
             }
         }
     });
+
 
     const OnSubmit = async (data: updateForm) => {
         try {
@@ -95,7 +97,7 @@ const UpdateProduct = () => {
                             {...register("longDescription")}
                         ></textarea>
                         <p className='text-red-600 text-[15px]'>{errors.longDescription && errors.longDescription.message}</p>
-                        <button className="bg-blue-500 px-2.5 py-1.5 rounded-md hover:bg-sky-700">Thêm mới</button>
+                        <button className="bg-blue-500 px-2.5 py-1.5 rounded-md hover:bg-sky-700">Sửa</button>
                     </div>
                 </div>
             </form>
